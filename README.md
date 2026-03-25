@@ -15,7 +15,7 @@ flowchart TD
     PT[Poll timer fires]
     MB[User clicks remote\nstatus in tray]
 
-    FW --> DB[Debounce 2s (customizable)]
+    FW --> DB["Debounce 2s (customizable)"]
     DB --> GS
     PT --> GS
     MB --> GS
