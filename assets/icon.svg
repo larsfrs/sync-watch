@@ -1,0 +1,12 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- background -->
+  <circle cx="50" cy="50" r="50" fill="#18181b"/>
+
+  <!-- right-pointing arrow (shifted right) -->
+  <path d="M 28 38 H 78 M 63 24 L 80 38 L 63 52"
+        stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- left-pointing arrow (shifted left) -->
+  <path d="M 72 62 H 22 M 37 48 L 20 62 L 37 76"
+        stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
