@@ -1,11 +1,12 @@
-# <img src="assets/icon.svg" width="32" style="vertical-align: middle"> sync-watch
+# <img src="assets/icon.svg" width="16"> sync-watch
 
-- Tauri Wrapper for Rclone that handles file watching and remote polling.
+- Rclone Wrapper written in Rust; Handles file watching and remote polling.
 - Manages Rclone remotes like a native cloud sync-client.
+- Provides a system tray interface for status and manual sync triggers.
 
 ## Features 
 
-- This action diagram encapsulates the whole logic of sync-watch, using "rem1" as
+- This activity diagram encapsulates the whole logic of sync-watch, using "rem1" as
 an example remote:
 
 ```mermaid
@@ -44,4 +45,11 @@ flowchart TD
 
     A & B & C & D & E --> UNLOCK[Unlock: is_syncing = false]
 ```
+## Dependencies
 
+## Installation
+- Prerequisite: [Rclone](https://rclone.org/downloads/) must be installed.
+
+## Development Setup
+
+## Limitations
