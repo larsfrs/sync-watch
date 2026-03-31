@@ -1,4 +1,4 @@
-# <img src="assets/icon.svg" width="16"> sync-watch
+<h1><img src="assets/icon.svg" width="18"> sync-watch</h1>
 
 - Rclone Wrapper written in Rust; Handles file watching and remote polling.
 - Manages Rclone remotes like a native cloud sync-client.
