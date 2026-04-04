@@ -12,7 +12,7 @@ mod types;
 use std::sync::Arc;
 use sync::commands::{daemon_running, get_rclone_version, get_remotes, stop_daemon, restart_daemon};
 use sync::daemon::RcloneDaemon;
-use sync::commands_inner::get_remotes_inner;
+use sync::commands_inner::{get_remotes_inner, rclone_check};
 use tray::manager::TrayManager;
 use errors::BackendError;
 
@@ -64,6 +64,12 @@ pub fn run() {
             let app_handle = app.handle().clone();
             spawn(async move {
                 let daemon = app_handle.state::<Arc<RcloneDaemon>>();
+
+                // pre-flight: verify rclone is installed before starting anything
+                if let Err(e) = rclone_check().await {
+                    let _ = app_handle.emit("error", BackendError::from(e));
+                    return;
+                }
 
                 // phase 2: start daemon
                 if let Err(e) = daemon.start().await {

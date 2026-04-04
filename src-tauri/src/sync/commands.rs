@@ -1,7 +1,10 @@
+use std::collections::HashMap;
 use std::sync::Arc;
 
+use tauri::Manager;
 use crate::sync::daemon::RcloneDaemon;
 use crate::sync::commands_inner::{get_remotes_inner, rclone_check};
+use crate::tray::manager::TrayManager;
 use crate::errors::BackendError;
 use crate::types::RemoteInfo;
 
@@ -26,17 +29,22 @@ pub async fn get_remotes(daemon: tauri::State<'_, Arc<RcloneDaemon>>) -> Result<
     Ok(get_remotes_inner(&daemon).await?)
 }
 
-/// Stops the rclone RC daemon.
+/// Stops the rclone RC daemon and clears the tray.
 #[tauri::command]
-pub async fn stop_daemon(daemon: tauri::State<'_, Arc<RcloneDaemon>>) -> Result<(), BackendError> {
+pub async fn stop_daemon(app: tauri::AppHandle, daemon: tauri::State<'_, Arc<RcloneDaemon>>) -> Result<(), BackendError> {
     daemon.stop().await?;
+    app.state::<TrayManager>().set_remotes(&app, HashMap::new());
     Ok(())
 }
 
-/// Restarts the rclone RC daemon. Also used to start it if it is not running.
+/// Restarts the rclone RC daemon, clears the tray, and repopulates it.
 #[tauri::command]
-pub async fn restart_daemon(daemon: tauri::State<'_, Arc<RcloneDaemon>>) -> Result<(), BackendError> {
+pub async fn restart_daemon(app: tauri::AppHandle, daemon: tauri::State<'_, Arc<RcloneDaemon>>) -> Result<(), BackendError> {
     daemon.stop().await?;
+    app.state::<TrayManager>().set_remotes(&app, HashMap::new());
     daemon.start().await?;
+    let remotes = get_remotes_inner(&daemon).await?;
+    let statuses = crate::store::init::load_statuses(&app, &remotes);
+    app.state::<TrayManager>().set_remotes(&app, statuses);
     Ok(())
 }
