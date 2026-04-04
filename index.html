@@ -1,14 +1,49 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sync-watch - rclone Remotes</title>
+    <title>sync-watch</title>
+    <link rel="stylesheet" href="/src/styles.css" />
     <script type="module" src="/src/main.ts" defer></script>
   </head>
 
   <body>
-    Test
+
+    <nav id="navbar">
+      <span id="app-name">sync-watch</span>
+      <div class="daemon-pill">
+        <span id="daemon-status" class="pill-section" title="Query daemon">Query daemon</span>
+        <span class="pill-divider"></span>
+        <button id="pill-toggle" class="pill-section" title="Show controls">⋯</button>
+        <div id="pill-controls" class="pill-controls">
+          <span class="pill-divider"></span>
+          <button id="stop-btn" class="pill-section" title="Stop daemon">Stop</button>
+          <span class="pill-divider"></span>
+          <button id="restart-btn" class="pill-section" title="Restart daemon">Restart</button>
+        </div>
+      </div>
+      <span class="spacer"></span>
+      <button id="hide-btn" class="nav-btn" title="Hide to tray">-</button>
+    </nav>
+
+    <div id="content">
+
+      <div id="left-pane">
+        <div class="pane-header">
+          <span class="pane-title">Remotes</span>
+          <button id="refresh-btn" class="nav-btn" title="Refresh remotes">↺</button>
+        </div>
+        <div id="remote-list"></div>
+      </div>
+
+      <div id="right-pane">
+        <!-- detail view injected here on remote selection -->
+      </div>
+
+    </div>
+
+    <div id="toasts"></div>
+
   </body>
 </html>
