@@ -1,8 +1,15 @@
-<h1><img src="assets/icon.svg" width="18"> sync-watch</h1>
+<h1 align="center">
+    <img src="assets/icon.svg" width="24" align="center"> sync-watch
+</h1>
 
-- Rclone Wrapper written in Rust; Handles file watching and remote polling.
-- Manages Rclone remotes like a native cloud sync-client.
-- Provides a system tray interface for status and manual sync triggers.
+<div style="display: flex; align-items: center; gap: 20px;">
+    <img src="assets/demo.gif" width="40%" alt="Demo Animation">
+    <div>
+        - Rclone Wrapper written in Rust; Handles file watching and remote polling.<br>
+        - Manages Rclone remotes like a native cloud sync-client.<br>
+        - Provides a system tray interface for status and manual sync triggers.
+    </div>
+</div>
 
 ## Features 
 

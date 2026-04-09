@@ -1,12 +1,29 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <!-- background -->
-  <circle cx="50" cy="50" r="50" fill="#18181b"/>
-
-  <!-- right-pointing arrow (shifted right) -->
-  <path d="M 28 38 H 78 M 63 24 L 80 38 L 63 52"
-        stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- left-pointing arrow (shifted left) -->
-  <path d="M 72 62 H 22 M 37 48 L 20 62 L 37 76"
-        stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#7db8ff" />
+      <stop offset="100%" stop-color="#1e6fff" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#g)" d="M66 184
+   C42 184 24 166 24 143
+   C24 121 40 103 62 99
+   C68 65 96 42 132 42
+   C169 42 198 66 205 101
+   C225 106 240 123 240 144
+   C240 170 221 184 195 184
+   C155 160 105 160 66 184 Z"
+  />
+  <path d="M 132 110
+           L 132 175
+           M 95 158
+           L 132 175
+           L 169 158"
+        fill="none" 
+        stroke="#e9e9ef" 
+        stroke-width="30" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+  />
 </svg>
